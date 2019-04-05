@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProfileIcon from 'react-icons/lib/md/person-outline';
 
 import './Compose.css';
+import Axios from 'axios';
 
 //////////////////////////////////////////////////////// THIS COMPONENT IS BEING RENDERED IN THE *APP* COMPONENT
 
@@ -20,10 +21,14 @@ export default class Compose extends Component {
     this.setState({ text });
   }
 
+
   createPost() {
-
+    const { text } = this.state;
+    const { createPostFn } = this.props;
+  
+    createPostFn( text );
+    this.setState({ text: '' });
   }
-
   render() {
     // Destructuring
     const { text } = this.state;
